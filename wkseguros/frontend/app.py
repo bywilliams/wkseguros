@@ -1,8 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return 'Hello World'
+    current_year = datetime.now().year
+    return render_template('site/home.html', current_year=current_year)
