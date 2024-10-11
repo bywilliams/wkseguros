@@ -10,12 +10,12 @@
 >
 > Padrão de projeto: repository pattern
 
-## Estrutura do projeto
+## Estrutura futura do projeto
 
 ~~~yaml
 /wkseguros
 │
-├── /app
+├── /backend
 │   ├── /api               # Backend APIs (FastAPI)
 │   │   ├── /v1
 │   │   │   ├── __init__.py
@@ -74,7 +74,7 @@
 │   ├── test_cotacao.py
 │   └── test_frontend.py
 │
-├── requirements.txt       # Dependências do projeto (FastAPI, Flask, SQLAlchemy, etc.)
+├── pyproject.toml       # Dependências do projeto (FastAPI, Flask, SQLAlchemy, etc.)
 ├── alembic.ini            # Configurações do Alembic para migrações
 ├── .env                   # Variáveis de ambiente
 └── README.md              # Documentação do projeto
