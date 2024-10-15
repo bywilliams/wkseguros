@@ -90,7 +90,7 @@
 
 ## Área de login
 
-![Currency Converter](/wkseguros/frontend/static/img/login.png)
+![Currency Converter](/wkseguros/frontend/static/img/logingif.gif)
 
 ## Dashboard principal
 
