@@ -65,15 +65,15 @@
                 alt="Logo WK Seguros" class="logo">
 
             <!-- Formulário de Login -->
-            <form method="POST" action="/login">
+            <form method="POST" action="{{ url_for('index.login') }}">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="email"
-                        name="email" placeholder="Email">
+                        name="email" placeholder="Email" value="test_user@example.com">
                     <label for="email">Email</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password"
-                        name="password" placeholder="Senha">
+                        name="password" placeholder="Senha" value="password123">
                     <label for="password">Senha</label>
                 </div>
 
@@ -86,9 +86,7 @@
                     </label>
                 </div>
 
-                <!-- Botão de Login -->
-                <button type="submit"
-                    class="btn btn-login w-100 py-2">Entrar</button>
+                <button type="submit" class="btn btn-lg btn-outline-primary w-100 py-2">Entrar</button>
             </form>
 
             <footer>

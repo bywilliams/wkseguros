@@ -5,12 +5,12 @@ Revises: 3216507d2044
 Create Date: 2024-10-10 21:16:47.159282
 
 """
+
+from datetime import datetime, timezone
 from typing import Sequence, Union
 
-from alembic import op
 import sqlalchemy as sa
-from datetime import datetime, timezone
-
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision: str = '4a63c3f12ad8'
@@ -20,13 +20,18 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.create_table (
-        "access_level",
-        sa.Column("id", sa.Integer, primary_key=True, index=True),
-        sa.Column("name", sa.String, nullable=False),
-        sa.Column("created_at", sa.DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+    op.create_table(
+        'access_level',
+        sa.Column('id', sa.Integer, primary_key=True, index=True),
+        sa.Column('name', sa.String, nullable=False),
+        sa.Column(
+            'created_at',
+            sa.DateTime,
+            default=lambda: datetime.now(timezone.utc),
+            onupdate=lambda: datetime.now(timezone.utc),
+        ),
     )
 
 
 def downgrade() -> None:
-    op.drop_table("access_level")
+    op.drop_table('access_level')

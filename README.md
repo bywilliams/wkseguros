@@ -15,6 +15,7 @@
 ~~~yaml
 /wkseguros
 │
+├── /alembic
 ├── /backend
 │   ├── /api               # Backend APIs (FastAPI)
 │   │   ├── /v1
@@ -32,6 +33,7 @@
 │   │
 │   ├── /models            # Modelos do banco de dados (SQLAlchemy)
 │   │   ├── __init__.py
+|   |   ├── user.py
 │   │   ├── cliente.py
 │   │   ├── apolice.py
 │   │   ├── cotacao.py
@@ -39,17 +41,21 @@
 │   │
 │   ├── /repositories      # Repositórios de persistência (Repository Pattern)
 │   │   ├── __init__.py
+|   |   ├── user_repository.py
 │   │   ├── cliente_repository.py
 │   │   └── apolice_repository.py
 │   │
 │   ├── /services          # Lógica de negócios
 │   │   ├── __init__.py
+|   |   ├── auth.py
 │   │   ├── cotacao_service.py
 │   │   └── apolice_service.py
 │   │
 │   ├── /schemas           # Schemas de entrada/saída (Pydantic)
 │   │   ├── __init__.py
-│   │   └── cotacao_schema.py
+|   |   ├── user.py 
+│   │   └── cotacao.py
+|   |
 │   │
 │   ├── /migrations        # Migrações do banco de dados (Alembic)
 │   └── main.py            # Ponto de entrada da API FastAPI
