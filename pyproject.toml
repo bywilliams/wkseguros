@@ -10,6 +10,13 @@ python = "^3.12"
 flask = "^3.0.3"
 sqlalchemy = "^2.0.35"
 alembic = "^1.13.3"
+pydantic = "^2.9.2"
+passlib = "^1.7.4"
+fastapi = "^0.115.2"
+uvicorn = "^0.31.1"
+email-validator = "^2.2.0"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -46,3 +53,4 @@ post_test = 'coverage html'
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+

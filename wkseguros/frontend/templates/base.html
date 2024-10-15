@@ -107,9 +107,13 @@
               loading="lazy" />
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <div>
+              <span class="d-flex justify-content-center">Bem vindo {{ session['user']['username'] }}</span>
+              <hr class="hr">
+            </div>
             <li><a class="dropdown-item" href="#">My profile</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('index.logout') }}">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -123,7 +127,9 @@
 <!--Main layout-->
 <main style="margin-top: 70px">
   <div class="content px-3">
-    {% block content %}{% endblock %}
+    
+    {% block content %}
+    {% endblock %}
   </div>
 </main>
 <footer class="text-center py-4 text-muted">
