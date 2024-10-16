@@ -95,3 +95,5 @@
 ## Dashboard principal
 
 ![Currency Converter](/wkseguros/frontend/static/img/dashboard.png)
+
+
