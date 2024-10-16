@@ -15,7 +15,7 @@ class UserCreate(UserBase):
 class UserResponse(UserBase):
     id: int
     username: str
-    access_level: int
+    access_level_id: int
 
     class Config:
         orm_mode = True

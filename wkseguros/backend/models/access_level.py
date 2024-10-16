@@ -4,6 +4,7 @@ from sqlalchemy import Column, DateTime, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 from wkseguros.config.database import Base
+# from wkseguros.backend.models.user import User
 
 
 class AccessLevel(Base):
@@ -17,4 +18,4 @@ class AccessLevel(Base):
         onupdate=lambda: datetime.now(timezone.utc),
     )
     
-    # access_level = relationship("access_level", back_populates="user")
+    user = relationship("User", back_populates="access_level")

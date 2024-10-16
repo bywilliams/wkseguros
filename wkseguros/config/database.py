@@ -6,8 +6,11 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-# url db
-DATABASE_URL = os.getenv('DATABASE_URL')
+# Obter o diretório base do projeto
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Construir o caminho absoluto para o banco de dados
+DATABASE_URL = os.getenv('DATABASE_URL', f'sqlite:///{os.path.abspath(os.path.join(BASE_DIR, "../wkseguros/app.db"))}')
 
 # Engine
 engine = create_engine(DATABASE_URL, connect_args={'check_same_thread': False})
