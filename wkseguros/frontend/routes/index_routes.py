@@ -33,7 +33,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         response = requests.post(
-            'http://127.0.0.1:8000/login',
+            'http://127.0.0.1:8000/api/v1/auth/login',
             json={'email': email, 'password': password},
         )
 
