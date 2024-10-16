@@ -72,9 +72,7 @@ def test_dashboard_page(client: FlaskClient):
 def test_dashboard_redirect(client: FlaskClient):
     """Testa o redirecionamento do /dashboard para /login se não estiver logado"""
     response = client.get('/dashboard')
-    assert (
-        response.status_code == HTTPStatus.FOUND
-    )  # Verifica se há redirecionamento
+    assert response.status_code == HTTPStatus.FOUND  # Verifica se há redirecionamento
     assert response.headers['Location'] == url_for('index.login')
 
 

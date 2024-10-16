@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,7 +11,10 @@ load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Construir o caminho absoluto para o banco de dados
-DATABASE_URL = os.getenv('DATABASE_URL', f'sqlite:///{os.path.abspath(os.path.join(BASE_DIR, "../wkseguros/app.db"))}')
+DATABASE_URL = os.getenv(
+    'DATABASE_URL',
+    f'sqlite:///{os.path.abspath(os.path.join(BASE_DIR, "../wkseguros/app.db"))}',
+)
 
 # Engine
 engine = create_engine(DATABASE_URL, connect_args={'check_same_thread': False})
