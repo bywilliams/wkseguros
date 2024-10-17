@@ -45,7 +45,8 @@ addopts = '-p no:warnings'
 [tool.taskipy.tasks] 
 lint = 'ruff check .; ruff check . --diff' 
 format = 'ruff check . --fix; ruff format .' 
-run = "FLASK_APP=wkseguros/frontend/app.py flask run --debug"
+front = "FLASK_APP=wkseguros/frontend/app.py flask run --debug"
+back = "cd wkseguros/backend && uvicorn wkseguros.backend.main:app --reload"
 pre_test = 'task lint' 
 test = 'pytest -s -x --cov=wkseguros -vv' 
 post_test = 'coverage html'

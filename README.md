@@ -87,6 +87,10 @@
 ~~~
 
 
+## Fluxo de login da Aplicação
+![Currency Converter](/wkseguros/frontend/static/img/fluxo_login.gif)
+
+
 
 ## Área de login
 

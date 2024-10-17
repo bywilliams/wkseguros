@@ -8,16 +8,6 @@ from wkseguros.backend.utils.dependencies import get_db
 router = APIRouter()
 
 
-@router.post('/login', response_model=UserResponse)
-def login(user: UserCreate, db: Session = Depends(get_db)):
-    try:
-        auth_service = AuthService(db)
-        authenticaded_user = auth_service.authenticate_user(user.email, user.password)
-        return authenticaded_user
-    except ValueError as e:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(e))
-
-
 @router.post('/add_user', response_model=UserResponse)
 def add_user(user: UserCreate, db: Session = Depends(get_db)):
     try:
