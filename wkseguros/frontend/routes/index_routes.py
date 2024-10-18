@@ -27,6 +27,14 @@ def dashboard():
     return redirect(url_for('index.login'))
 
 
+@index_bp.route('/clientes')
+def clients():
+    response = requests.get('http://127.0.0.1:8000/api/v1/clients')
+    if response.status_code == HTTPStatus.OK:
+        clients = response.json()
+        return render_template('app/client.html', clients=clients)
+    return "Error fetching clients", response.status_code
+
 @index_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

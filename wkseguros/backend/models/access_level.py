@@ -5,8 +5,6 @@ from sqlalchemy.orm import relationship
 
 from wkseguros.config.database import Base
 
-# from wkseguros.backend.models.user import User
-
 
 class AccessLevel(Base):
     __tablename__ = 'access_level'

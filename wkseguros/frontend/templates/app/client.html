@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Client{% endblock %} 
+
+{% block content %}
+<h1 class="text-center">Clientes</h1>
+<div class="table-responsive me-2">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="table-secondary border-dark">
+                <th>#</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>End.</th>
+                <th>Telefone</th>
+                <th>Data Nasc.</th>
+                <th>CPF</th>
+                <th>Criado em</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.born_date }}</td>
+                <td>{{ client.cpf }}</td>
+                <td>{{ client.created_at }}</td>
+                <td>
+                    <div class="d-flex justify-content-evenly">
+                        <i class="fa-regular fa-pen-to-square text-warning fa-2x"></i>
+                        <i class="fa-solid fa-trash text-danger fa-2x"></i>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
