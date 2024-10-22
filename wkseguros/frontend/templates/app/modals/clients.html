@@ -1,0 +1,123 @@
+<!-- Modal Criar client -->
+<div class="modal fade" id="createClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-light bg-gradient">
+            <form action="" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="">Nome:</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="Roberto Carlos">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="">E-mail:</label>
+                            <input type="email" name="" id="" class="form-control" placeholder="roberto@teste.com.br">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Endereço:</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="av. cocada preta">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Telefone:</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="(11)91020-4565">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Nascimento:</label>
+                            <input type="date" name="" id="" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">CPF:</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="123.456.345-10">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" type="button" class="btn btn-success">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fim Modal Criar client -->
+
+
+<!-- Modal editar client -->
+{% for client in clients %}
+<div class="modal fade" id="editClient_{{ client.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-light bg-gradient">
+            <form action="" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar {{ client.name }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="">Nome:</label>
+                            <input type="text" name="" id="" class="form-control" value="{{ client.name }}">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="">E-mail:</label>
+                            <input type="email" name="" id="" class="form-control" value="{{ client.email}}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Endereço:</label>
+                            <input type="text" name="" id="" class="form-control" value="{{ client.address }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Telefone:</label>
+                            <input type="text" name="" id="" class="form-control" value="{{ client.phone }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Nascimento:</label>
+                            <input type="date" name="" id="" class="form-control" value="{{ client.born_date }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">CPF:</label>
+                            <input type="text" name="" id="" class="form-control" value="{{ client.cpf }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-dark" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" type="button" class="btn btn-primary">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- Fim Modal editar client -->
+
+
+<!-- Modal Excluir client -->
+{% for client in clients %}
+<div class="modal fade" id="removeClient_{{ client.id }}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Remover {{ client.name }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span>Tem certeza que deseja remover este registro?</span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-danger">Remover</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+<!-- Fim Modal Excluir client -->

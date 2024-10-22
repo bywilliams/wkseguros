@@ -39,24 +39,3 @@ var myChart = new Chart(ctx, {
     },
   },
 });
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll('#sidebarMenu .list-group-item');
-  
-  // Recuperar o estado 'active' do localStorage
-  const activeLink = localStorage.getItem('activeLink');
-  if (activeLink) {
-    document.querySelector(`#sidebarMenu .list-group-item[href="${activeLink}"]`).classList.add('active');
-  }
-
-  links.forEach(link => {
-    link.addEventListener('click', function() {
-      links.forEach(item => item.classList.remove('active'));
-      this.classList.add('active');
-      
-      // Armazenar o estado 'active' no localStorage
-      localStorage.setItem('activeLink', this.getAttribute('href'));
-    });
-  });
-});

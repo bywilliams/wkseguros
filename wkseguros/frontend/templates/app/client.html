@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Página Client{% endblock %} 
+{% block title %}Página Client{% endblock %}
 
 {% block content %}
 <h1 class="text-center">Clientes</h1>
-<div class="table-responsive me-2">
+<div class="d-flex justify-content-end mb-2">
+    <button type="submit" class="btn btn-outline-success" data-bs-toggle="modal"
+        data-bs-target="#createClient">Adicionar</button>
+</div>
+
+<div class="table-responsive">
     <table class="table table-hover table-bordered">
         <thead>
             <tr class="table-secondary border-dark">
@@ -32,8 +37,14 @@
                 <td>{{ client.created_at }}</td>
                 <td>
                     <div class="d-flex justify-content-evenly">
-                        <i class="fa-regular fa-pen-to-square text-warning fa-2x"></i>
-                        <i class="fa-solid fa-trash text-danger fa-2x"></i>
+                        <a href="#!" data-bs-toggle="modal"
+                        data-bs-target="#editClient_{{ client.id }}">
+                            <i class="fa-regular fa-pen-to-square text-warning fa-2x"></i>
+                        </a>
+                        <a href="#!" data-bs-toggle="modal"
+                        data-bs-target="#removeClient_{{ client.id }}">
+                            <i class="fa-solid fa-trash text-danger fa-2x"></i>
+                        </a>
                     </div>
                 </td>
             </tr>
@@ -41,4 +52,7 @@
         </tbody>
     </table>
 </div>
+
+{% include 'app/modals/clients.html' %}
+
 {% endblock %}
