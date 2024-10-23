@@ -1,10 +1,11 @@
-from sqlalchemy.orm import session
+from sqlalchemy.orm import Session
+from sqlalchemy.exc import SQLAlchemyError
 
 from wkseguros.backend.models.client import Client
 
 
 class ClientRepository:
-    def __init__(self, db: session):
+    def __init__(self, db: Session):
         self.db = db
 
     def get_all_clients(self) -> list[Client]:
@@ -33,6 +34,22 @@ class ClientRepository:
             The retrieved client model instance, or None if not found.
         """
         return self.db.query(Client).filter(Client.id == client_id).first()
+    
+    def get_client_by_email(self, email: str) -> Client:
+        """
+        Retrieves a client by their email.
+
+        Parameters:
+        -----------
+        email : str
+            The email of the client to retrieve.
+
+        Returns:
+        --------
+        Client
+            The retrieved client model instance, or None if not found.
+        """
+        return self.db.query(Client).filter(Client.email == email).first()
 
     def create_client(self, client: Client) -> Client:
         """Create a client
@@ -43,10 +60,14 @@ class ClientRepository:
         Returns:
             Client: The retrieve client model instance, of None if  not found.
         """
-        self.db.add(client)
-        self.db.commit()
-        self.db.refresh()
-        return client
+        try:
+            self.db.add(client)
+            self.db.commit()
+            self.db.refresh(client)
+            return client
+        except SQLAlchemyError as e:
+            self.db.rollback()
+            raise e
 
     def update_client(self, client: Client) -> Client:
         """Update a client
@@ -57,9 +78,9 @@ class ClientRepository:
         Returns:
             Client: The retrieve client model instance, of None if not found.
         """
-        self.db.merge(Client)
+        self.db.merge(client)
         self.db.commit()
-        self.db.refresh(Client)
+        self.db.refresh(client)
         return client
 
     def delete_client(self, client_id: int) -> None:

@@ -2,37 +2,41 @@
 <div class="modal fade" id="createClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light bg-gradient">
-            <form action="" method="post">
-                <div class="modal-header">
+            <form action="{{ url_for('index.create_client') }}" method="post">
+                <div class="modal-header bg-success bg-gradient text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="">Nome:</label>
-                            <input type="text" name="" id="" class="form-control" placeholder="Roberto Carlos">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Roberto">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Sobrenome:</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Carlos">
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">E-mail:</label>
-                            <input type="email" name="" id="" class="form-control" placeholder="roberto@teste.com.br">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="roberto@teste.com.br">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Endereço:</label>
-                            <input type="text" name="" id="" class="form-control" placeholder="av. cocada preta">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="av. cocada preta">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Telefone:</label>
-                            <input type="text" name="" id="" class="form-control" placeholder="(11)91020-4565">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="(11)91020-4565">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Nascimento:</label>
-                            <input type="date" name="" id="" class="form-control">
+                            <input type="date" name="born_date" id="born_date" class="form-control">
                         </div>
                         <div class="col-md-6">
                             <label for="">CPF:</label>
-                            <input type="text" name="" id="" class="form-control" placeholder="123.456.345-10">
+                            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="123.456.345-10">
                         </div>
                     </div>
                 </div>
@@ -52,37 +56,41 @@
 <div class="modal fade" id="editClient_{{ client.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light bg-gradient">
-            <form action="" method="post">
-                <div class="modal-header">
+            <form action="{{ url_for('index.update_client', client_id=client.id) }}" method="post">
+                <div class="modal-header bg-primary bg-gradient text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Editar {{ client.name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="">Nome:</label>
-                            <input type="text" name="" id="" class="form-control" value="{{ client.name }}">
+                            <input type="text" name="name" id="name" class="form-control" value="{{ client.name }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Sobrenome:</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ client.last_name }}">
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">E-mail:</label>
-                            <input type="email" name="" id="" class="form-control" value="{{ client.email}}">
+                            <input type="email" name="email" id="email" class="form-control" value="{{ client.email}}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Endereço:</label>
-                            <input type="text" name="" id="" class="form-control" value="{{ client.address }}">
+                            <input type="text" name="address" id="address" class="form-control" value="{{ client.address }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Telefone:</label>
-                            <input type="text" name="" id="" class="form-control" value="{{ client.phone }}">
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{ client.phone }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Nascimento:</label>
-                            <input type="date" name="" id="" class="form-control" value="{{ client.born_date }}">
+                            <input type="date" name="born_date" id="born_date" class="form-control" value="{{ client.iso_born_date }}">
                         </div>
                         <div class="col-md-6">
                             <label for="">CPF:</label>
-                            <input type="text" name="" id="" class="form-control" value="{{ client.cpf }}">
+                            <input type="text" name="cpf" id="cpf" class="form-control" value="{{ client.cpf }}">
                         </div>
                     </div>
                 </div>
@@ -103,18 +111,19 @@
 <div class="modal fade" id="removeClient_{{ client.id }}">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Remover {{ client.name }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <span>Tem certeza que deseja remover este registro?</span>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-danger">Remover</button>
-            </div>
+            <form action="{{ url_for('index.delete_client', client_id=client.id) }}" method="post">
+                <div class="modal-header bg-danger text-white">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Remover {{ client.name }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span>Tem certeza que deseja remover este registro?</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-danger">Remover</button>
+                </div>
+            </form>
         </div>
 
     </div>
