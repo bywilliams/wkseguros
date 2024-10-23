@@ -27,12 +27,56 @@ def dashboard():
     return redirect(url_for('index.login'))
 
 
-@index_bp.route('/clientes')
+@index_bp.route('/clientes', methods=['GET'])
 def clients():
     response = requests.get('http://127.0.0.1:8000/api/v1/clients')
     if response.status_code == HTTPStatus.OK:
         clients = response.json()
         return render_template('app/client.html', clients=clients)
+    return "Error fetching clients", response.status_code
+
+@index_bp.route('/clientes', methods=['POST'])
+def create_client():
+    client_data = {
+        'name': request.form['name'],
+        'last_name': request.form['last_name'],
+        'cpf': request.form['cpf'],
+        'born_date': request.form['born_date'],
+        'address': request.form['address'],
+        'email': request.form['email'],
+        'phone': request.form['phone'],
+        'created_at': "2024-10-22 18:00:00",
+    }
+    response = requests.post('http://127.0.0.1:8000/api/v1/clients', json=client_data)
+    if response.status_code == HTTPStatus.OK:
+        return redirect(url_for('index.clients'))
+    return "Error fetching clients", response.status_code
+
+@index_bp.route('/update/<int:client_id>', methods=['POST'])
+def update_client(client_id):
+    client_data = {
+        'name': request.form['name'],
+        'last_name': request.form['last_name'],
+        'cpf': request.form['cpf'],
+        'born_date': request.form['born_date'],
+        'address': request.form['address'],
+        'email': request.form['email'],
+        'phone': request.form['phone'],
+        'updated_at': "2024-10-23 18:00:00"
+    }
+    
+    response = requests.put(f'http://127.0.0.1:8000/api/v1/clients/{client_id}', json=client_data)
+    # return {"status": response.status_code}
+    if response.status_code == HTTPStatus.OK:
+        return redirect(url_for('index.clients'))
+    return "Error fetching clients", response.status_code
+
+
+@index_bp.route('/<int:client_id>', methods=['POST'])
+def delete_client(client_id):
+    response = requests.delete(f'http://127.0.0.1:8000/api/v1/clients/{client_id}')
+    if response.status_code == HTTPStatus.OK:
+        return redirect(url_for('index.clients'))
     return "Error fetching clients", response.status_code
 
 @index_bp.route('/login', methods=['GET', 'POST'])
