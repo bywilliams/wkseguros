@@ -50,6 +50,22 @@ class ClientRepository:
             The retrieved client model instance, or None if not found.
         """
         return self.db.query(Client).filter(Client.email == email).first()
+    
+    def get_client_by_cpf(self, cpf: str) -> Client:
+        """
+        Retrieves a client by their CPF.
+
+        Parameters:
+        -----------
+        cpf : str
+            The CPF of the client to retrieve.
+
+        Returns:
+        --------
+        Client
+            The retrieved client model instance, or None if not found.
+        """
+        return self.db.query(Client).filter(Client.cpf == cpf).first()
 
     def create_client(self, client: Client) -> Client:
         """Create a client

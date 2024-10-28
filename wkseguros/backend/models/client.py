@@ -8,7 +8,7 @@ from wkseguros.config.database import Base
 class Client(Base):
     __tablename__ = 'clients'
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, nullable=False)
+    name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     cpf = Column(String(11), unique=True, nullable=False)
     born_date = Column(Date, nullable=True)

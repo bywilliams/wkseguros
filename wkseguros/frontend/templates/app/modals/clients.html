@@ -12,37 +12,37 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="">Nome:</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Roberto">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Roberto" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Sobrenome:</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Carlos">
+                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Carlos" required>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">E-mail:</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="roberto@teste.com.br">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="roberto@teste.com.br" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Endereço:</label>
-                            <input type="text" name="address" id="address" class="form-control" placeholder="av. cocada preta">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="av. cocada preta" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Telefone:</label>
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="(11)91020-4565">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="(11)91020-4565" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Nascimento:</label>
-                            <input type="date" name="born_date" id="born_date" class="form-control">
+                            <label for="">Data Nascimento:</label>
+                            <input type="date" name="born_date" id="born_date" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label for="">CPF:</label>
-                            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="123.456.345-10">
+                            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="123.456.345-10" required>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" type="button" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -66,31 +66,31 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="">Nome:</label>
-                            <input type="text" name="name" id="name" class="form-control" value="{{ client.name }}">
+                            <input type="text" name="name" id="name" class="form-control" value="{{ client.name }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Sobrenome:</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ client.last_name }}">
+                            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ client.last_name }}" required>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">E-mail:</label>
-                            <input type="email" name="email" id="email" class="form-control" value="{{ client.email}}">
+                            <input type="email" name="email" id="email" class="form-control" value="{{ client.email}}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Endereço:</label>
-                            <input type="text" name="address" id="address" class="form-control" value="{{ client.address }}">
+                            <input type="text" name="address" id="address" class="form-control" value="{{ client.address }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Telefone:</label>
-                            <input type="text" name="phone" id="phone" class="form-control" value="{{ client.phone }}">
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{ client.phone }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="">Nascimento:</label>
-                            <input type="date" name="born_date" id="born_date" class="form-control" value="{{ client.iso_born_date }}">
+                            <label for="">Data de Nascimento:</label>
+                            <input type="date" name="born_date" id="born_date" class="form-control" value="{{ client.iso_born_date }}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="">CPF:</label>
-                            <input type="text" name="cpf" id="cpf" class="form-control" value="{{ client.cpf }}">
+                            <input type="text" name="cpf" id="cpf" class="form-control" value="{{ client.cpf }}" required>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <span>Tem certeza que deseja remover este registro?</span>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
                     <button type="submit" class="btn btn-danger">Remover</button>
                 </div>
             </form>
