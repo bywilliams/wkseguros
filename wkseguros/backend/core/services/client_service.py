@@ -11,16 +11,11 @@ class ClientService:
         self.client_repository = ClientRepository(db)
 
     def create_client(self, client_create: ClientCreate) -> Client:
-        client = self.client_repository.get_client_by_email(client_create.email)
-        if client:
-            raise ValueError(f'Cliente {client.email} já existe.')
         client = Client(**client_create.model_dump())
         return self.client_repository.create_client(client)
 
     def update_client(self, client_id: int, client_update: ClientUpdate) -> Client:
         client = self.client_repository.get_client_by_id(client_id)
-        if not client:
-            raise ValueError(f'Client com ID {client_id} não encontrado.')
         for key, value in client_update.model_dump(exclude_unset=True).items():
             setattr(client, key, value)
         return self.client_repository.update_client(client)

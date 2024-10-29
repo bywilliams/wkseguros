@@ -3,6 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light bg-gradient">
             <form action="{{ url_for('index.create_client') }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <div class="modal-header bg-success bg-gradient text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cliente</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -57,6 +58,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light bg-gradient">
             <form action="{{ url_for('index.update_client', client_id=client.id) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <div class="modal-header bg-primary bg-gradient text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Editar {{ client.name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -112,6 +114,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form action="{{ url_for('index.delete_client', client_id=client.id) }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <div class="modal-header bg-danger text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Remover {{ client.name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

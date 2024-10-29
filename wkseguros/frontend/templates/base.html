@@ -120,7 +120,11 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <div>
-              <span class="d-flex justify-content-center mt-3">Bem vindo {{ session['user']['username'] }}</span>
+              {% if 'user' in session %}
+                <span class="d-flex justify-content-center mt-3">Bem vindo {{ session['user']['username'] }}</span>
+              {% else %}
+                <span class="d-flex justify-content-center mt-3">Bem vindo, visitante!</span>
+              {% endif %}
               <hr class="hr">
             </div>
             <li><a class="dropdown-item" href="#">My profile</a></li>

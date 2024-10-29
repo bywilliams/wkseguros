@@ -10,11 +10,12 @@ from flask import (
     request,
     session,
     url_for,
-    flash,
-    jsonify
+    flash
 )
+from flask_wtf.csrf import CSRFProtect, validate_csrf
 
 load_dotenv()
+csrf = CSRFProtect()
 
 index_bp = Blueprint('index', __name__)
 
@@ -59,6 +60,8 @@ def clients():
 
 @index_bp.route('/client', methods=['POST'])
 def create_client():
+    validate_csrf(request.form['csrf_token'])
+    
     client_data = {
         'name': request.form['name'],
         'last_name': request.form['last_name'],
@@ -90,6 +93,8 @@ def create_client():
 
 @index_bp.route('/client/<int:client_id>', methods=['POST'])
 def update_client(client_id):
+    validate_csrf(request.form['csrf_token'])
+    
     client_data = {
         'name': request.form['name'],
         'last_name': request.form['last_name'],
@@ -109,6 +114,7 @@ def update_client(client_id):
 
 @index_bp.route('/<int:client_id>', methods=['POST'])
 def delete_client(client_id):
+    validate_csrf(request.form['csrf_token'])
     response = requests.delete(f'{BACKEND_URL}clients/{client_id}')
     if response.status_code == HTTPStatus.OK:
         return redirect(url_for('index.clients'))
@@ -117,6 +123,8 @@ def delete_client(client_id):
 @index_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        validate_csrf(request.form['csrf_token'])
+    
         email = request.form['email']
         password = request.form['password']
         response = requests.post(
@@ -134,4 +142,4 @@ def login():
 @index_bp.route('/logout')
 def logout():
     session.pop('user', None)
-    return redirect('/login')
+    return redirect(url_for('index.login'))
